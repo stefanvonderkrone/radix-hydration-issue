@@ -9,6 +9,8 @@ import type { LinksFunction } from "@remix-run/node";
 
 import "./tailwind.css";
 
+import * as Toast from "@radix-ui/react-toast";
+
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
@@ -32,9 +34,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+        <Toast.Provider>
+          <Toast.Viewport />
         {children}
         <ScrollRestoration />
         <Scripts />
+        </Toast.Provider>
       </body>
     </html>
   );
